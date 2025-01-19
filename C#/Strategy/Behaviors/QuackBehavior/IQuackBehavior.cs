@@ -4,10 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Strategy
+namespace Strategy.Behaviors.QuackBehavior
 {
-    internal class Duck
+    internal interface IQuackBehavior
     {
-
+        void Quack();
     }
 }
