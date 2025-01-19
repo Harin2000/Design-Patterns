@@ -38,10 +38,7 @@ namespace Observer
             //statisticsDisplay.Update(Temperature, Humidity, Pressure);
             //forecastDisplay.Update(Temperature, Humidity, Pressure);
 
-            foreach (var observer in Observers)
-            {
-                observer.Update(Temperature, Humidity, Pressure);
-            }
+            Notify();
         }
         public void Add(IObserver toadd)
         {
