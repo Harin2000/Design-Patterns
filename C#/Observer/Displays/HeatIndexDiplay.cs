@@ -6,21 +6,23 @@ using System.Threading.Tasks;
 
 namespace Observer.Displays
 {
-    internal class ForecastDisplay:IObserver, IDisplayElement
+    internal class HeatIndexDiplay:IObserver, IDisplayElement
     {
-        public ForecastDisplay(ISubject weatherData)
-        {
-            weatherData = weatherData ?? throw new ArgumentNullException();
+        private ISubject weatherData;
+        private float heatIndex;
+        public HeatIndexDiplay(ISubject weatherData) {
+            this.weatherData = weatherData;
             weatherData.Add(this);
         }
         public void Update(float temp, float humidity, float pressure)
         {
             Console.WriteLine($"{this.GetType()} received newly updated values: Temperature:{temp}, Humidity:{humidity}, Pressure:{pressure}");
+            heatIndex = temp + humidity + pressure;
             Display();
         }
         public void Display()
         {
-            Console.WriteLine($"{this.GetType()} is displaying...");
+            Console.WriteLine($"{this.GetType()} is displaying the heat index:{heatIndex}");
         }
     }
 }

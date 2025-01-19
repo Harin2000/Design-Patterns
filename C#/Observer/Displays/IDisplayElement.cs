@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace Observer.Displays
 {
-    internal interface IDisplay
+    internal interface IDisplayElement
     {
-        void Update(float temp, float humidity, float pressure);
+        void Display();
     }
 }
