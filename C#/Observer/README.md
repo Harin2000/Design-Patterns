@@ -15,3 +15,7 @@ The Observer Pattern defines a one-to-many dependency between objects so that wh
 
 ### Final State:
 ![image](https://github.com/user-attachments/assets/faebefad-d30b-4006-9f06-0441b1404be4)
+
+### Chapter end notes:
+![image](https://github.com/user-attachments/assets/93ea6009-12fd-4687-af43-595c35a8603a)
+
