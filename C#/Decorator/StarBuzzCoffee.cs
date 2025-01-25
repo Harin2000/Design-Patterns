@@ -2,7 +2,7 @@
 
 namespace Decorator
 {
-    internal class Program
+    internal class StarBuzzCoffee
     {
         static void Main(string[] args)
         {
