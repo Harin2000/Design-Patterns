@@ -12,12 +12,14 @@ namespace State
         SOLD_OUT = 0,
         NO_QUARTER,
         HAS_QUARTER,
-        SOLD
+        SOLD,
+        WINNER
     }
     internal class GumballMachine
     {
         private int gumballs;
         private State state;
+        Random rand = new Random();
         public GumballMachine(int gumballs)
         {
             this.gumballs = gumballs;
@@ -25,10 +27,11 @@ namespace State
         }
         public void InsertQuarter()
         {
-            switch (state) {
+            switch (state)
+            {
                 case State.NO_QUARTER:
                     Console.WriteLine("Inserted a quarter.");
-                    state = State.HAS_QUARTER; 
+                    state = State.HAS_QUARTER;
                     break;
                 case State.SOLD_OUT:
                     Console.WriteLine($"Invalid action:{MethodBase.GetCurrentMethod().Name} for state:{state}.");
@@ -37,6 +40,9 @@ namespace State
                     Console.WriteLine($"Invalid action:{MethodBase.GetCurrentMethod().Name} for state:{state}.");
                     break;
                 case State.SOLD:
+                    Console.WriteLine($"Invalid action:{MethodBase.GetCurrentMethod().Name} for state:{state}.");
+                    break;
+                case State.WINNER:
                     Console.WriteLine($"Invalid action:{MethodBase.GetCurrentMethod().Name} for state:{state}.");
                     break;
                 default:
@@ -61,6 +67,9 @@ namespace State
                 case State.SOLD:
                     Console.WriteLine($"Invalid action:{MethodBase.GetCurrentMethod().Name} for state:{state}.");
                     break;
+                case State.WINNER:
+                    Console.WriteLine($"Invalid action:{MethodBase.GetCurrentMethod().Name} for state:{state}.");
+                    break;
                 default:
                     Console.WriteLine($"Invalid state: {state}");
                     break;
@@ -78,9 +87,21 @@ namespace State
                     break;
                 case State.HAS_QUARTER:
                     Console.WriteLine($"Turned the crank.");
-                    state = State.SOLD;
+                    if (rand.Next(10) == 0)
+                    {
+                        Console.WriteLine("We got a winner!");
+                        state = State.WINNER;
+                    }
+                    else
+                    {
+                        Console.WriteLine("Not a winner.");
+                        state = State.SOLD;
+                    }
                     break;
                 case State.SOLD:
+                    Console.WriteLine($"Invalid action:{MethodBase.GetCurrentMethod().Name} for state:{state}.");
+                    break;
+                case State.WINNER:
                     Console.WriteLine($"Invalid action:{MethodBase.GetCurrentMethod().Name} for state:{state}.");
                     break;
                 default:
@@ -104,7 +125,13 @@ namespace State
                 case State.SOLD:
                     Console.WriteLine($"Dispensed a gumball.");
                     --gumballs;
-                    if(gumballs>0) state = State.NO_QUARTER;
+                    if (gumballs > 0) state = State.NO_QUARTER;
+                    else state = State.SOLD_OUT;
+                    break;
+                case State.WINNER:
+                    Console.WriteLine($"Dispensed two gumballs if present in the machine.");
+                    gumballs -= 2;
+                    if (gumballs > 0) state = State.NO_QUARTER;
                     else state = State.SOLD_OUT;
                     break;
                 default:
