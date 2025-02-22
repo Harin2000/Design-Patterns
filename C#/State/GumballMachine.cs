@@ -19,13 +19,13 @@ namespace State
     internal class GumballMachine
     {
         public int gumballs;
-        public IState SoldOutState { get; private set; }
-        public IState NoQuarterState { get; private set; }
-        public IState HasQuarterState { get; private set; }
-        public IState SoldState { get; private set; }
-        public IState WinnerState { get; private set; }
+        public States.State SoldOutState { get; private set; }
+        public States.State NoQuarterState { get; private set; }
+        public States.State HasQuarterState { get; private set; }
+        public States.State SoldState { get; private set; }
+        public States.State WinnerState { get; private set; }
 
-        public IState State { get; set; }
+        public States.State State { get; set; }
         public GumballMachine(int gumballs)
         {
             SoldOutState = new SoldOut(this);

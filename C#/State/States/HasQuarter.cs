@@ -2,7 +2,7 @@
 
 namespace State.States
 {
-    internal class HasQuarter : IState
+    internal class HasQuarter : State
     {
         private GumballMachine gumballMachine;
         public Random Rand = new Random();
@@ -10,23 +10,14 @@ namespace State.States
         {
             this.gumballMachine = gumballMachine;
         }
-        public void Dispense()
-        {
-            Console.WriteLine($"Invalid action:{MethodBase.GetCurrentMethod().Name} for state:{GetType()}.");
-        }
 
-        public void EjectQuarter()
+        public override void EjectQuarter()
         {
             Console.WriteLine($"Ejected the quarter.");
             gumballMachine.State = gumballMachine.NoQuarterState;
         }
 
-        public void InsertQuarter()
-        {
-            Console.WriteLine($"Invalid action:{MethodBase.GetCurrentMethod().Name} for state:{GetType()}.");
-        }
-
-        public void TurnCrank()
+        public override void TurnCrank()
         {
             Console.WriteLine($"Turned the crank.");
             if (Rand.Next(10) == 0)

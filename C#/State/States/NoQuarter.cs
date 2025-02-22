@@ -7,32 +7,18 @@ using System.Threading.Tasks;
 
 namespace State.States
 {
-    internal class NoQuarter : IState
+    internal class NoQuarter : State
     {
         GumballMachine gumballMachine;
         public NoQuarter(GumballMachine gumballMachine)
         {
             this.gumballMachine = gumballMachine;
         }
-        public void Dispense()
-        {
-            Console.WriteLine($"Invalid action:{MethodBase.GetCurrentMethod().Name} for state:{GetType()}.");
-        }
 
-        public void EjectQuarter()
-        {
-            Console.WriteLine($"Invalid action:{MethodBase.GetCurrentMethod().Name} for state:{GetType()}.");
-        }
-
-        public void InsertQuarter()
+        public override void InsertQuarter()
         {
             Console.WriteLine("Inserted a quarter.");
             gumballMachine.State = gumballMachine.HasQuarterState;
-        }
-
-        public void TurnCrank()
-        {
-            Console.WriteLine($"Invalid action:{MethodBase.GetCurrentMethod().Name} for state:{GetType()}.");
         }
     }
 }
