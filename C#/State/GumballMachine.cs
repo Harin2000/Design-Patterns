@@ -54,5 +54,9 @@ namespace State
         {
             State.Dispense();
         }
+        public void Refill(int gumballs)
+        {
+            State.Refill(gumballs);
+        }
     }
 }

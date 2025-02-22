@@ -25,5 +25,9 @@ namespace State.States
         {
             Console.WriteLine($"Invalid action:{MethodBase.GetCurrentMethod().Name} for state:{GetType()}.");
         }
+        public virtual void Refill(int gumballs)
+        {
+            Console.WriteLine($"Invalid action:{MethodBase.GetCurrentMethod().Name} for state:{GetType()}.");
+        }
     }
 }
