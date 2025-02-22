@@ -10,5 +10,11 @@ namespace State.States
         {
             this.gumballMachine = gumballMachine;
         }
+        public override void Refill(int gumballs)
+        {
+            Console.WriteLine($"Refilling the gumball machine with {gumballs} gumballs.");
+            gumballMachine.gumballs = gumballs;
+            gumballMachine.State = gumballMachine.NoQuarterState;
+        }
     }
 }

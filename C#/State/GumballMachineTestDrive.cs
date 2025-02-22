@@ -45,7 +45,7 @@
             Console.WriteLine();
             Console.WriteLine("Attempting the full flow 10 times...");
             // Full flow 10 times:
-            gumballMachine = new GumballMachine(10);
+            gumballMachine.Refill(10);
             for (int i = 0; i < 11; i++)
             {
                 gumballMachine.InsertQuarter();
