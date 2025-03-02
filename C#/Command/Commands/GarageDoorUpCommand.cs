@@ -13,7 +13,7 @@ namespace Command.Commands
         public GarageDoorUpCommand(GarageDoor garageDoor) { 
             _garageDoor = garageDoor;
         }
-        public void execute()
+        public void Execute()
         {
             _garageDoor.Up();
         }

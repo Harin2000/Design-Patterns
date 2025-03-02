@@ -13,7 +13,7 @@ namespace Command.Commands
         public LightOnCommand(Light light) {
             _light = light;
         }
-        public void execute()
+        public void Execute()
         {
             _light.On();
         }

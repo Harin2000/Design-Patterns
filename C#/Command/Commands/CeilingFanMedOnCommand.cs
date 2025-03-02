@@ -16,7 +16,7 @@ namespace Command.Commands
             _ceilingFan = ceilingFan;
             prevSpeed = ceilingFan.Speed;
         }
-        public void execute()
+        public void Execute()
         {
             prevSpeed = _ceilingFan.Speed;
             _ceilingFan.Medium();

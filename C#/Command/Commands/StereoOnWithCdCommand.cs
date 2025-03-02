@@ -14,7 +14,7 @@ namespace Command.Commands
         {
             _stereo = stereo;
         }
-        public void execute()
+        public void Execute()
         {
             _stereo.On(); _stereo.SetCd(); _stereo.setVolume(11);
         }

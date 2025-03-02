@@ -9,7 +9,7 @@ namespace Command.Commands
 {
     internal class NoCommand : ICommand
     {
-        public void execute()
+        public void Execute()
         {
             Console.WriteLine($"{GetType()}: {MethodBase.GetCurrentMethod().Name}");
         }

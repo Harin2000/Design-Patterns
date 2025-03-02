@@ -8,7 +8,7 @@ namespace Command.Commands
 {
     internal interface ICommand
     {
-        void execute();
+        void Execute();
         void Undo();
     }
 }

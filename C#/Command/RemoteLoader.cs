@@ -67,9 +67,25 @@ namespace Command
 
             remoteControl.OnPushed(2); remoteControl.Undo();
             Console.WriteLine($"GetSpeed() should return High again, i.e. 3: {ceilingFan.GetSpeed()}");
+            remoteControl.OffPushed(2);
 
             // NOTE: If ICommand were to only have a single method, we can assign Remote Control's
             // slots with lambda => All the concrete command objects can be reomved in that case.
+
+            Console.WriteLine("\nParty Macro command testing...");
+            ICommand[] partyOnCommands = { livingRoomLightOnCommand, ceilingFanHighOnCommand, stereoOnWithCdCommand };
+            ICommand[] partyOffCommands = { livingRoomLightOffCommand, ceilingFanOffCommand, stereoOffCommand};
+            MacroCommand partyOnMacroCommand = new MacroCommand(partyOnCommands);
+            MacroCommand partyOffMacroCommand = new MacroCommand(partyOffCommands);
+            remoteControl.onCommands[6] = partyOnMacroCommand;
+            remoteControl.offCommands[6] = partyOffMacroCommand;
+            Console.WriteLine(remoteControl);
+            Console.WriteLine();
+
+            remoteControl.OnPushed(6);
+            remoteControl.OffPushed(6);
+
+            remoteControl.Undo();
         }
     }
 }

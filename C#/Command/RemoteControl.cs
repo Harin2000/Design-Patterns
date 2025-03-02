@@ -29,12 +29,12 @@ namespace Command
         ICommand lastCommand = new NoCommand();
         public void OnPushed(int slot)
         {
-            onCommands[slot].execute();
+            onCommands[slot].Execute();
             lastCommand = onCommands[slot];
         }
         public void OffPushed(int slot)
         {
-            offCommands[slot].execute();
+            offCommands[slot].Execute();
             lastCommand = offCommands[slot];
         }
         public void Undo()
