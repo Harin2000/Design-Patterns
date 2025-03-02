@@ -23,8 +23,6 @@ The NoCommand object is an example of a null object. A null object is useful whe
 You’ll find uses for Null Objects in conjunction with many Design Patterns, and sometimes you’ll even see “Null Object” listed as a Design Pattern.
 
 ## Serious Coding: The updated code, using lambda expressions:
-![image](https://github.com/user-attachments/assets/e68bd284-0b8b-412c-8970-c4710ea126d6)
-
 Once we’ve replaced the concrete commands with lambda expressions, we can delete all those concrete command classes (LightOnCommand, LightOffCommand, HottubOnCommand, HottubOffCommand, etc.). If you do this for every concrete command, you’ll reduce the total number of classes in the remote control application from 22 to 9.
 
 Note that you can only do this if your Command interface has one abstract method. As soon as we add a second abstract method, the lambda shorthand no longer works.
