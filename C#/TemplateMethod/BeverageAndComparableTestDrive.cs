@@ -17,6 +17,15 @@
             foreach (var duck in ducks) {
                 Console.WriteLine($"{duck}");
             }
+            /*
+             * b:8
+             * a:7
+             * e:6
+             * c:5
+             * d:4
+             */
+
+            // TODO: Add JFrame.paint(Graphics graphics) equivalent here.
         }
     }
 }
