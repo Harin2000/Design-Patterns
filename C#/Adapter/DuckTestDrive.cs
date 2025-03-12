@@ -13,16 +13,22 @@ namespace Adapter
             var turkeyAdapter = new TurkeyAdapter(turkey);
 
             Console.WriteLine("Testing duck...");
-            duck.Fly();
-            duck.Quack();
+            testduck(duck);
+            Console.WriteLine();
 
             Console.WriteLine("Testing wild turkey...");
             turkey.Fly();
             turkey.Gobble();
+            Console.WriteLine();
 
             Console.WriteLine("Testing TurkeyAdapter...");
-            turkeyAdapter.Quack();
-            turkeyAdapter.Fly();
+            testduck(turkeyAdapter);
+        }
+
+        static void testduck(IDuck ducktotest)
+        {
+            ducktotest.Fly();
+            ducktotest.Quack();
         }
     }
 }
