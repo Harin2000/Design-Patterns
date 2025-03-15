@@ -11,8 +11,8 @@ namespace Iterator
 {
     internal class Waitress
     {
-        PancakeHouseMenu panCakeMenu;
-        DinerMenu dinerMenu;
+        IEnumerable<MenuItem> panCakeMenu;
+        IEnumerable<MenuItem> dinerMenu;
         public Waitress(PancakeHouseMenu pancakeHouseMenu, DinerMenu dinerMenu)
         {
             this.panCakeMenu = pancakeHouseMenu;
@@ -25,18 +25,18 @@ namespace Iterator
             //{
             //    Console.WriteLine(item);
             //}
-            PrintMenu(panCakeMenu.CreateIterator());
+            PrintMenu(panCakeMenu.GetEnumerator());
 
             //var dinerMenuItems = dinerMenu.GetMenuItems();
             //foreach (var item in dinerMenuItems)
             //{
             //    Console.WriteLine(item);
             //}
-            PrintMenu(dinerMenu.CreateIterator());
+            PrintMenu(dinerMenu.GetEnumerator());
         }
-        private void PrintMenu(IEnumerator enumerator)
+        private void PrintMenu(IEnumerator<MenuItem> enumerator)
         {
-            do{ Console.WriteLine(enumerator.Current); }while(enumerator.MoveNext());
+            do{ Console.WriteLine(enumerator.Current); } while(enumerator.MoveNext());
             Console.WriteLine();
         }
 

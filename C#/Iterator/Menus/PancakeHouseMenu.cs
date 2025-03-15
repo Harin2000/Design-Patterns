@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Iterator.Menus
 {
-    internal class PancakeHouseMenu 
+    internal class PancakeHouseMenu : IEnumerable<MenuItem>
     {
         List<MenuItem> menuItems;
         public PancakeHouseMenu()
@@ -27,9 +27,15 @@ namespace Iterator.Menus
             var menuItem = new MenuItem(name, desc, veg, price);
             menuItems.Add(menuItem);
         }
-        public IEnumerator CreateIterator()
+
+        public IEnumerator<MenuItem> GetEnumerator()
         {
-            return new PancakeHouseMenuIterator(menuItems);
+            return menuItems.GetEnumerator();
+        }
+
+        IEnumerator IEnumerable.GetEnumerator()
+        {
+            return menuItems.GetEnumerator();
         }
     }
 }

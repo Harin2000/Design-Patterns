@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Iterator.Iterators
 {
-    internal class DinerMenuIterator : IEnumerator
+    internal class DinerMenuIterator<MenuItem> : IEnumerator<MenuItem>
     {
         private MenuItem[] menuItems;
         private int position = 0;
@@ -17,6 +17,13 @@ namespace Iterator.Iterators
         }
 
         public object Current => menuItems[position];
+
+        MenuItem IEnumerator<MenuItem>.Current => menuItems[position];
+
+        public void Dispose()
+        {
+            throw new NotImplementedException();
+        }
 
         public bool MoveNext()
         {
