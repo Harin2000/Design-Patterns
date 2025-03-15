@@ -14,8 +14,8 @@ namespace Composite
         //IEnumerable<MenuItem> panCakeMenu;
         //IEnumerable<MenuItem> dinerMenu;
         //IEnumerable<MenuItem> cafeMenu;
-        List<IEnumerable<MenuItem>> menus;
-        public Waitress(List<IEnumerable<MenuItem>> menus)
+        List<IMenu> menus;
+        public Waitress(List<IMenu> menus)
         {
             //this.panCakeMenu = pancakeHouseMenu;
             //this.dinerMenu = dinerMenu;
