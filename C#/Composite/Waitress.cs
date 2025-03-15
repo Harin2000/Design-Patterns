@@ -37,7 +37,10 @@ namespace Composite
         }
         private void PrintMenu(IEnumerator<MenuItem> enumerator)
         {
-            do{ Console.WriteLine(enumerator.Current); } while(enumerator.MoveNext());
+            while (enumerator.MoveNext())
+            {
+                Console.WriteLine(enumerator.Current);
+            }
             Console.WriteLine();
         }
 
