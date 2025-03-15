@@ -1,5 +1,6 @@
 ﻿using Iterator.Iterators;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -7,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Iterator.Menus
 {
-    internal class PancakeHouseMenu
+    internal class PancakeHouseMenu : IEnumerable<MenuItem>
     {
         List<MenuItem> menuItems;
         public PancakeHouseMenu()
@@ -18,14 +19,23 @@ namespace Iterator.Menus
             AddItem("PK3", "PK3_Desc", false, 3.0);
             AddItem("PK4", "PK4_Desc", false, 4.0);
         }
+
+        public object Current => throw new NotImplementedException();
+
         public void AddItem(string name, string desc, bool veg, double price)
         {
             var menuItem = new MenuItem(name, desc, veg, price);
             menuItems.Add(menuItem);
         }
-        public IIterator CreateIterator()
+
+        public IEnumerator<MenuItem> GetEnumerator()
         {
-            return new PancakeHouseMenuIterator(menuItems);
+            return menuItems.GetEnumerator();
+        }
+
+        IEnumerator IEnumerable.GetEnumerator()
+        {
+            return menuItems.GetEnumerator();
         }
     }
 }

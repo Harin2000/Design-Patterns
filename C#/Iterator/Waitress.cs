@@ -1,6 +1,7 @@
 ﻿using Iterator.Iterators;
 using Iterator.Menus;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,8 +11,8 @@ namespace Iterator
 {
     internal class Waitress
     {
-        PancakeHouseMenu panCakeMenu;
-        DinerMenu dinerMenu;
+        IEnumerable<MenuItem> panCakeMenu;
+        IEnumerable<MenuItem> dinerMenu;
         public Waitress(PancakeHouseMenu pancakeHouseMenu, DinerMenu dinerMenu)
         {
             this.panCakeMenu = pancakeHouseMenu;
@@ -24,18 +25,18 @@ namespace Iterator
             //{
             //    Console.WriteLine(item);
             //}
-            PrintMenu(panCakeMenu.CreateIterator());
+            PrintMenu(panCakeMenu.GetEnumerator());
 
             //var dinerMenuItems = dinerMenu.GetMenuItems();
             //foreach (var item in dinerMenuItems)
             //{
             //    Console.WriteLine(item);
             //}
-            PrintMenu(dinerMenu.CreateIterator());
+            PrintMenu(dinerMenu.GetEnumerator());
         }
-        private void PrintMenu(IIterator iterator)
+        private void PrintMenu(IEnumerator<MenuItem> enumerator)
         {
-            while (iterator.HasNext()) { Console.WriteLine(iterator.Next()); }
+            do{ Console.WriteLine(enumerator.Current); } while(enumerator.MoveNext());
             Console.WriteLine();
         }
 

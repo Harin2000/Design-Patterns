@@ -1,5 +1,6 @@
 ﻿using Iterator.Iterators;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.ConstrainedExecution;
@@ -8,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace Iterator.Menus
 {
-    internal class DinerMenu
+    internal class DinerMenu : IEnumerable<MenuItem>
     {
         static readonly int MAX_ITEMS = 6;
         int numberOfItems = 0;
@@ -35,9 +36,14 @@ namespace Iterator.Menus
                 ++numberOfItems;
             }
         }
-        public IIterator CreateIterator()
+        public IEnumerator GetEnumerator()
         {
-            return new DinerMenuIterator(menuItems);
+            return GetEnumerator();
+        }
+
+        IEnumerator<MenuItem> IEnumerable<MenuItem>.GetEnumerator()
+        {
+            return new DinerMenuIterator<MenuItem>(menuItems);
         }
     }
 }
