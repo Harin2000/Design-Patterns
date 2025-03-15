@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Iterator.Iterators;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.ConstrainedExecution;
@@ -34,9 +35,9 @@ namespace Iterator.Menus
                 ++numberOfItems;
             }
         }
-        public MenuItem[] GetMenuItems()
+        public IIterator CreateIterator()
         {
-            return menuItems;
+            return new DinerMenuIterator(menuItems);
         }
     }
 }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Iterator.Iterators;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -22,9 +23,9 @@ namespace Iterator.Menus
             var menuItem = new MenuItem(name, desc, veg, price);
             menuItems.Add(menuItem);
         }
-        public List<MenuItem> GetMenuItems()
+        public IIterator CreateIterator()
         {
-            return menuItems;
+            return new PancakeHouseMenuIterator(menuItems);
         }
     }
 }

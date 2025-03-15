@@ -1,4 +1,5 @@
-﻿using Iterator.Menus;
+﻿using Iterator.Iterators;
+using Iterator.Menus;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,22 +10,32 @@ namespace Iterator
 {
     internal class Waitress
     {
+        PancakeHouseMenu panCakeMenu;
+        DinerMenu dinerMenu;
+        public Waitress(PancakeHouseMenu pancakeHouseMenu, DinerMenu dinerMenu)
+        {
+            this.panCakeMenu = pancakeHouseMenu;
+            this.dinerMenu = dinerMenu;
+        }
         public void PrintMenu()
         {
-            var panCakeMenu = new PancakeHouseMenu();
-            List<MenuItem> pcMenuItems = panCakeMenu.GetMenuItems();
-            foreach(var item in pcMenuItems)
-            {
-                Console.WriteLine(item);
-            }
-            Console.WriteLine();
+            //List<MenuItem> pcMenuItems = panCakeMenu.GetMenuItems();
+            //foreach(var item in pcMenuItems)
+            //{
+            //    Console.WriteLine(item);
+            //}
+            PrintMenu(panCakeMenu.CreateIterator());
 
-            var dinerMenu = new DinerMenu();
-            var dinerMenuItems = dinerMenu.GetMenuItems();
-            foreach (var item in dinerMenuItems)
-            {
-                Console.WriteLine(item);
-            }
+            //var dinerMenuItems = dinerMenu.GetMenuItems();
+            //foreach (var item in dinerMenuItems)
+            //{
+            //    Console.WriteLine(item);
+            //}
+            PrintMenu(dinerMenu.CreateIterator());
+        }
+        private void PrintMenu(IIterator iterator)
+        {
+            while (iterator.HasNext()) { Console.WriteLine(iterator.Next()); }
             Console.WriteLine();
         }
 
