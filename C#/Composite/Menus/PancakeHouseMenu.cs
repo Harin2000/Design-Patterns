@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Composite.Menus
 {
-    internal class PancakeHouseMenu : IEnumerable<MenuItem>
+    internal class PancakeHouseMenu : IMenu
     {
         List<MenuItem> menuItems;
         public PancakeHouseMenu()

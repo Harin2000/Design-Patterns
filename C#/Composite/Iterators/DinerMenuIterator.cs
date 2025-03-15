@@ -11,7 +11,7 @@ namespace Composite.Iterators
     internal class DinerMenuIterator<MenuItem> : IEnumerator<MenuItem>
     {
         private MenuItem[] menuItems;
-        private int position = 0;
+        private int position = -1;
         public DinerMenuIterator(MenuItem[] menuItems) {
             this.menuItems = menuItems;
         }

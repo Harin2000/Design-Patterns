@@ -11,21 +11,27 @@ namespace Composite
 {
     internal class Waitress
     {
-        IEnumerable<MenuItem> panCakeMenu;
-        IEnumerable<MenuItem> dinerMenu;
-        public Waitress(PancakeHouseMenu pancakeHouseMenu, DinerMenu dinerMenu)
+        List<IMenu> menus;
+        public Waitress(List<IMenu> menus)
         {
-            this.panCakeMenu = pancakeHouseMenu;
-            this.dinerMenu = dinerMenu;
+            this.menus = menus;
         }
         public void PrintMenu()
         {
-            PrintMenu(panCakeMenu.GetEnumerator());
-            PrintMenu(dinerMenu.GetEnumerator());
+            IEnumerator<IMenu> menusEnum = menus.GetEnumerator();
+
+            while (menusEnum.MoveNext())
+            {
+                IEnumerator<MenuItem> menuEnum = menusEnum.Current.GetEnumerator();
+                PrintMenu(menuEnum);
+            }
         }
         private void PrintMenu(IEnumerator<MenuItem> enumerator)
         {
-            do{ Console.WriteLine(enumerator.Current); } while(enumerator.MoveNext());
+            while (enumerator.MoveNext())
+            {
+                Console.WriteLine(enumerator.Current);
+            }
             Console.WriteLine();
         }
 

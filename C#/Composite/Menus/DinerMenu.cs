@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace Composite.Menus
 {
-    internal class DinerMenu : IEnumerable<MenuItem>
+    internal class DinerMenu : IMenu
     {
         static readonly int MAX_ITEMS = 6;
         int numberOfItems = 0;
