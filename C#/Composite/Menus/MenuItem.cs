@@ -6,21 +6,59 @@ using System.Threading.Tasks;
 
 namespace Composite.Menus
 {
-    internal class MenuItem
+    internal class MenuItem:MenuComponent
     {
-        public string Name { get; private set; }
-        public string Description { get; private set; }
-        public bool Vegetarian { get; private set; }
-        public double Price { get; private set; }
+        string name;
+        string desc;
+        bool veg;
+        double price;
         public MenuItem(string name, string desc, bool veg, double price)
         {
-            Name = name;
-            Description = desc;
-            Vegetarian = veg;
-            Price = price;
+            this.name = name;
+            this.desc = desc;
+            this.veg = veg;
+            this.price = price;
         }
         public override string ToString() {
-            return $"{Name}:{Description}:{Vegetarian}:{Price}";
+            return $"{GetName()}:{GetDescription()}:{IsVegetarian()}:{GetPrice()}";
+        }
+        public override void Print()
+        {
+            Console.WriteLine(ToString());
+        }
+        public override void Add(MenuComponent menuComponent)
+        {
+            throw new NotImplementedException();
+        }
+
+        public override void Remove(MenuComponent menuComponent)
+        {
+            throw new NotImplementedException();
+        }
+
+        public override MenuComponent GetChild(int i)
+        {
+            throw new NotImplementedException();
+        }
+
+        public override string GetName()
+        {
+            return name;
+        }
+
+        public override string GetDescription()
+        {
+            return desc;
+        }
+
+        public override bool IsVegetarian()
+        {
+            return veg;
+        }
+
+        public override double GetPrice()
+        {
+            return price;
         }
     }
 }
