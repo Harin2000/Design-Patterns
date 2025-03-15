@@ -8,7 +8,9 @@ namespace Composite
         {
             var pcHouseMenu = new PancakeHouseMenu();
             var dinerMenu = new DinerMenu();
-            var waitress = new Waitress(pcHouseMenu, dinerMenu);
+            var cafeMenu = new CafeMenu();
+            var menus = new List<IEnumerable<MenuItem>> { pcHouseMenu, dinerMenu, cafeMenu };
+            var waitress = new Waitress(menus);
             waitress.PrintMenu();
         }
     }
