@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Composite.Menus
 {
-    internal class CafeMenu:IEnumerable<MenuItem>
+    internal class CafeMenu:IMenu
     {
         Dictionary<string, MenuItem> menuItems = new Dictionary<string, MenuItem>();
         public CafeMenu()
