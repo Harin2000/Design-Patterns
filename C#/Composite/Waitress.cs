@@ -24,8 +24,15 @@ namespace Composite
         }
         public void PrintMenu()
         {
-            foreach (var menu in menus) {
-                PrintMenu(menu.GetEnumerator());
+            PrintMenus(menus);
+        }
+        private void PrintMenus(List<IMenu> menus)
+        {
+            IEnumerator<IMenu> menusEnum = menus.GetEnumerator();
+
+            while (menusEnum.MoveNext()) {
+                IEnumerator<MenuItem> menuEnum = menusEnum.Current.GetEnumerator();
+                PrintMenu(menuEnum);
             }
         }
         private void PrintMenu(IEnumerator<MenuItem> enumerator)
