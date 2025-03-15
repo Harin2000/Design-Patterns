@@ -1,6 +1,7 @@
 ﻿using Iterator.Iterators;
 using Iterator.Menus;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -33,9 +34,9 @@ namespace Iterator
             //}
             PrintMenu(dinerMenu.CreateIterator());
         }
-        private void PrintMenu(IIterator iterator)
+        private void PrintMenu(IEnumerator enumerator)
         {
-            while (iterator.HasNext()) { Console.WriteLine(iterator.Next()); }
+            do{ Console.WriteLine(enumerator.Current); }while(enumerator.MoveNext());
             Console.WriteLine();
         }
 
