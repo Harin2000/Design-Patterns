@@ -18,7 +18,6 @@ namespace CompoundPattern_1
             //IQuackable redheadDuck = new RedheadDuck();
             //IQuackable duckCall = new DuckCall();
             //IQuackable rubberDuck = new RubberDuck();
-            IQuackable mallardDuck = factory.CreateMallardDuck();
             IQuackable redheadDuck = factory.CreateRedHeadDuck();
             IQuackable duckCall = factory.CreateDuckCall();
             IQuackable rubberDuck = factory.CreateRubberDuck();
@@ -26,11 +25,18 @@ namespace CompoundPattern_1
 
             Console.WriteLine("Duck Simulator:");
 
-            Simulate(mallardDuck);
-            Simulate(redheadDuck);
-            Simulate(duckCall);
-            Simulate(rubberDuck);
-            Simulate(gooseDuck);
+            IQuackable mallardOne = factory.CreateMallardDuck();
+            IQuackable mallardTwo = factory.CreateMallardDuck();
+            IQuackable mallardThree = factory.CreateMallardDuck();
+            IQuackable mallardFour = factory.CreateMallardDuck();
+
+            Flock flockOfMallards = new Flock(new List<IQuackable>() { mallardOne, mallardTwo, mallardThree, mallardFour });
+            Console.WriteLine("Simulating Flock of mallards:");
+            Simulate(flockOfMallards);
+
+            Flock flockOfDucks = new Flock(new List<IQuackable>() { redheadDuck, duckCall, rubberDuck, gooseDuck, flockOfMallards });
+            Console.WriteLine("Simulating Flock of Ducks:");
+            Simulate(flockOfDucks);
 
             Console.WriteLine($"Total quacks are:{DuckDecorator.GetQuacks()}");
         }
