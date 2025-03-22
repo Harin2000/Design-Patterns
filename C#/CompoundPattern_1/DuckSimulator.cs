@@ -1,4 +1,5 @@
-﻿using CompoundPattern_1.Quackables;
+﻿using CompoundPattern_1.Factories;
+using CompoundPattern_1.Quackables;
 
 namespace CompoundPattern_1
 {
@@ -7,19 +8,20 @@ namespace CompoundPattern_1
         static void Main(string[] args)
         {
             DuckSimulator simulator = new DuckSimulator();
-            simulator.Simulate();
+            IAbstractDuckFactory factory = new CountingDuckFactory();
+            simulator.Simulate(factory);
         }
 
-        void Simulate()
+        void Simulate(IAbstractDuckFactory factory)
         {
             //IQuackable mallardDuck = new MallardDuck();
             //IQuackable redheadDuck = new RedheadDuck();
             //IQuackable duckCall = new DuckCall();
             //IQuackable rubberDuck = new RubberDuck();
-            IQuackable mallardDuck = new DuckDecorator(new MallardDuck());
-            IQuackable redheadDuck = new DuckDecorator(new RedheadDuck());
-            IQuackable duckCall = new DuckDecorator(new DuckCall());
-            IQuackable rubberDuck = new DuckDecorator(new RubberDuck());
+            IQuackable mallardDuck = factory.CreateMallardDuck();
+            IQuackable redheadDuck = factory.CreateRedHeadDuck();
+            IQuackable duckCall = factory.CreateDuckCall();
+            IQuackable rubberDuck = factory.CreateRubberDuck();
             IQuackable gooseDuck = new GooseAdapter(new Goose()); //Don't want honk counts
 
             Console.WriteLine("Duck Simulator:");
