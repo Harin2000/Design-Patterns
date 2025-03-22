@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CompoundPattern_1.ObserverPattern;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -9,6 +10,24 @@ namespace CompoundPattern_1.Quackables
     internal class Flock : IQuackable
     {
         List<IQuackable> quackers;
+
+        public void NotifyObservers()
+        {
+            var enumerator = quackers.GetEnumerator();
+            while (enumerator.MoveNext())
+            {
+                enumerator.Current.NotifyObservers();
+            }
+        }
+
+        public void RegisterObserver(IObserver observer)
+        {
+            var enumerator = quackers.GetEnumerator();
+            while (enumerator.MoveNext())
+            {
+                enumerator.Current.RegisterObserver(observer);
+            }
+        }
         public Flock(List<IQuackable> ducks)
         {
             this.quackers = ducks;
