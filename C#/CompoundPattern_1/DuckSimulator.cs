@@ -1,4 +1,5 @@
 ﻿using CompoundPattern_1.Factories;
+using CompoundPattern_1.ObserverPattern;
 using CompoundPattern_1.Quackables;
 
 namespace CompoundPattern_1
@@ -14,10 +15,6 @@ namespace CompoundPattern_1
 
         void Simulate(IAbstractDuckFactory factory)
         {
-            //IQuackable mallardDuck = new MallardDuck();
-            //IQuackable redheadDuck = new RedheadDuck();
-            //IQuackable duckCall = new DuckCall();
-            //IQuackable rubberDuck = new RubberDuck();
             IQuackable redheadDuck = factory.CreateRedHeadDuck();
             IQuackable duckCall = factory.CreateDuckCall();
             IQuackable rubberDuck = factory.CreateRubberDuck();
@@ -35,10 +32,13 @@ namespace CompoundPattern_1
             Simulate(flockOfMallards);
 
             Flock flockOfDucks = new Flock(new List<IQuackable>() { redheadDuck, duckCall, rubberDuck, gooseDuck, flockOfMallards });
+
+            Quackologist quackologist = new Quackologist();
+            flockOfDucks.RegisterObserver(quackologist);
             Console.WriteLine("Simulating Flock of Ducks:");
             Simulate(flockOfDucks);
 
-            Console.WriteLine($"Total quacks are:{DuckDecorator.GetQuacks()}");
+            Console.WriteLine($"Total quacks are:{QuackCounter.GetQuacks()}");
         }
 
         void Simulate(IQuackable duck)

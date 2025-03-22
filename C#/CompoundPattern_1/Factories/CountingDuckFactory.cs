@@ -11,22 +11,22 @@ namespace CompoundPattern_1.Factories
     {
         public IQuackable CreateDuckCall()
         {
-            return new DuckDecorator(new DuckCall());
+            return new QuackCounter(new DuckCall());
         }
 
         public IQuackable CreateMallardDuck()
         {
-            return new DuckDecorator(new MallardDuck());
+            return new QuackCounter(new MallardDuck());
         }
 
         public IQuackable CreateRedHeadDuck()
         {
-            return new DuckDecorator(new RedheadDuck());
+            return new QuackCounter(new RedheadDuck());
         }
 
         public IQuackable CreateRubberDuck()
         {
-            return new DuckDecorator(new RubberDuck());
+            return new QuackCounter(new RubberDuck());
         }
     }
 }
